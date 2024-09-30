@@ -5,7 +5,7 @@ import time
 def Selection(arr):
     for i in range(len(arr)):
         minIND = i
-        for j in range(i + 1, len(arr)):  # Corrigido: começa em i + 1
+        for j in range(i + 1, len(arr)): 
             if arr[j] < arr[minIND]:
                 minIND = j
         arr[i], arr[minIND] = arr[minIND], arr[i]
@@ -93,7 +93,7 @@ def execTime(modulo, arr):
     st = time.time()
     modulo(arr)
     elapsed_time = time.time() - st
-    return max(elapsed_time, 1e-9)  # Garante tempo mínimo positivo
+    return max(elapsed_time, 1e-9) 
 
 def avgExecTime(modulo, arr, rep=3):
     tot = 0
@@ -115,14 +115,11 @@ def plotar(ASs, Time):
     all_positive = all(temp > 0 for tempos in Time.values() for temp in tempos)
     if all_positive:
         plt.yscale('log')
-    else:
-        print("Aviso: Não foi possível aplicar escala logarítmica no eixo Y, pois existem valores não positivos.")
-    
     plt.grid(True)
     plt.show()
 
 if __name__ == "__main__":
-    ASs = [10 ** i for i in range(1, 4)]
+    ASs = [10 ** i for i in range(1, 6)]
     
     tempExec = {
         'Insertion': [],
@@ -151,8 +148,3 @@ if __name__ == "__main__":
         print(f"Quick Sort: {tempExec['Quick'][-1]:.6f} segundos")
 
     plotar(ASs, tempExec)
-
-    # Cálculo da média de tempo de execução para cada algoritmo
-    for sort_algo, times in tempExec.items():
-        avg_time = sum(times) / len(times)
-        print(f"Média de tempo do {sort_algo} Sort: {avg_time:.6f} segundos")
