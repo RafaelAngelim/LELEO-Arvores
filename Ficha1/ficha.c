@@ -78,18 +78,10 @@ int main() {
     Arv* raiz = arv_cria(5, a3, a8);
 
     printf("arvore esta vazia? %d\n", arv_vazia(raiz)); 
-
-    int num_pares = pares(raiz);
-    printf("Quantidade de nos pares: %d\n", num_pares); 
-
-    int num_folhas = folhas(raiz);
-    printf("Quantidade de folhas: %d\n", num_folhas); 
-
-    int num_um_filho = um_filho(raiz);
-    printf("Quantidade de nos com um filho: %d\n", num_um_filho);
-
-    Arv* copia_raiz = copia(raiz);
-    printf("arvore copiada e igual? %d\n", igual(raiz, copia_raiz)); 
+    printf("Quantidade de nos pares: %d\n", pares(raiz)); 
+    printf("Quantidade de folhas: %d\n", folhas(raiz)); 
+    printf("Quantidade de nos com um filho: %d\n", um_filho(raiz));
+    printf("arvore copiada e igual? %d\n", igual(raiz, copia(raiz))); 
 
     
     free(a1);
@@ -100,7 +92,6 @@ int main() {
     free(a3);
     free(a8);
     free(raiz);
-    free(copia_raiz);
 
     return 0;
 }
