@@ -131,17 +131,15 @@ int main() {
     }
 
     Node *result = tree_search(T->root, 13);
-    if (result != NULL)
-        printf("Node with key 13 found: %p\n", result);
-    else
-        printf("Node with key 13 not found.\n");
+    if (result != NULL) printf("Node with key 13 found: %p\n", result);
+    else printf("Node with key 13 not found.\n");
 
     tree_delete(T, result);
     result = tree_search(T->root, 13);
-    if (result != NULL)
+    if (result != NULL){
         printf("Node with key 13 still found: %p\n", result);
-    else
-        printf("Node with key 13 deleted.\n");
+    }
+    else printf("Node with key 13 deleted.\n");
 
     free_tree(T->root);
     free(T);
