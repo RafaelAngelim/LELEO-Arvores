@@ -1,6 +1,34 @@
 #include "ficha.h"
 #define RED 1
 #define BLACK 0
+#define RED_COLOR "\033[1;31m"
+#define BLACK_COLOR "\033[1;37m"
+#define RESET_COLOR "\033[0m"
+
+
+void print_tree(Node *node, int depth, char prefix) {
+    if (node == NULL) {
+        return;
+    }
+    print_tree(node->right, depth + 1, '/');
+
+    for (int i = 0; i < depth; i++) {
+        printf("    ");
+    }
+
+    if (prefix != ' ') {
+        printf("%c---", prefix);
+    }
+
+    if (node->color == RED) {
+        printf(RED_COLOR "%d\n" RESET_COLOR, node->key);
+    } else {
+        printf(BLACK_COLOR "%d\n" RESET_COLOR, node->key);
+    }
+
+    print_tree(node->left, depth + 1, '\\');
+}
+
 
 Node* create_node(int key) {
     Node *node = (Node*)malloc(sizeof(Node));
@@ -108,4 +136,23 @@ void tree_insert(Tree *T, Node *z) {
     } else {
         y->right = z;
     }
+}
+
+int main() {
+    Tree *T = create_tree();
+
+
+    int keys[] = {10, 20, 30, 15, 25, 5, 1};
+    int n = sizeof(keys) / sizeof(keys[0]);
+
+
+    for (int i = 0; i < n; i++) {
+        Node *new_node = create_node(keys[i]);
+        RB_insert(T, new_node);
+
+        printf("\ninserindo %d:\n", keys[i]);
+        print_tree(T->root, 0, ' ');
+    }
+
+    return 0;
 }
