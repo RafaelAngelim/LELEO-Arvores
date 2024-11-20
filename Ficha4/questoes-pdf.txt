@@ -22,7 +22,6 @@ Node* BALANCE(Node* x) {
         }
     }
 
-    // Desequilíbrio à direita
     if (fator_balanceamento < -1) {
         if (x->right->right->h >= x->right->left->h) {
             return LEFT_ROTATE(x);
@@ -58,4 +57,4 @@ Node* AVL_INSERT(Node* root, Node* z) {
 
 D) O tempo de inserção de um nó na ABB, segue o tempo comum de uma arvore binaria, tendo seu tempo baseado na altura da árvore, ou seja, O(lg n).
 Dado o tempo de inserção, as rotaçções no pior caso poderiam exigir o balanceamento de cada nó da folha à raiz, sendo assim, realizando O(lg n) rotações.
-Observando em conclusão que tanto o processo de inserção quanto o de rotação leva, em seu pior caso, O(lg n) o tempo total para o AVL_INSERT seria de O(lg n)
+Observando em conclusão que tanto o processo de inserção quanto o de rotação leva, em seu pior caso, O(lg n) o tempo total para o AVL_INSERT seria de O(lg n).
